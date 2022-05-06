@@ -1,0 +1,25 @@
+body{
+    background-color:rgb(0,26,51);
+    color: rgb(251, 250, 245);
+}
+
+a:link {
+    color: rgb(238, 238, 155);
+    background-color: transparent;
+  }
+
+  h2{
+    text-align:center;
+  }
+  #description{
+      margin-left:100px;
+      margin-right:100px;
+      text-align:center;
+  }
+
+  #Op-Ed{
+    margin-left:100px;
+    margin-right:100px;
+    text-align:center;
+    margin-bottom:100px;
+  }
