@@ -1,27 +1,97 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>ASG5</title>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="styles.css" />
-	</head>
-	<body>
-		<div id="earth">Earth</div>
-		<div class="loader-wrapper">
-			<span class="loader"><span class="loader-inner"></span></span>
-		</div>
+<head>
+	<title>ASG5 - Little Universe</title>
+	<style type="text/css">
+		body{
+			font-size: 24px;
+		}
+		h1{
+			text-align: center;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="featureStyle.css" />
+</head>
+<body>
+	<h1>Little Universe</h1>
+	Eagle Huang
+	<br>
+	ID = 1662683
+	<br>
+	<br>
+	<h2>Project Description</h2>
+	<div id="description">
+		<b>OverView</b>
+		<br>
+		This project uses the THREE.js library to create a scene of a mini universe. Models used within the scene are borrowed online and are implemented into the scene with GLTFLoader. 
+		The scene is composed of 3 light sources (2 point light and 1 ambient light) as well as a perspective camera for viewing. Orbital control is implemented for user control, which includes arrow key or mouse key for panning. 
+		<br>
+		<br>
+		<b>Animations</b>
+		<br>
+		Models are rotated/translated/scaled to fit the scene. Animation of models, such as planet rotations or planet trajectory are done using the rotation attribute and Matrix4 multiplication in the requestAnimation loop. 
+		AnimationMixer is utilized to enable models with inherent animation, such as the fire model(used as the fire from the rocket engine).
+		<br>
+		<br>
+		<b>Additional Functions</b>
+		<br>
+		Users can click on any model in the scene to randomize the color of that object's material. This is done by using RayCaster to compare mouse position and object position. Users can also click on Earth to get a closeup look at the planet. Local php server is setup to run the code without CORS error.
+	</div>
 
-		<script>
-			setTimeout(function() {
-				$('.loader-wrapper').fadeOut("slow");
-			}, 5000);
-		</script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/104/three.min.js"></script>
-		<script src="lib/OBJLoader.js"></script>
-		<script src="lib/MTLLoader.js"></script>
-		<script src="lib/GLTFLoader.js"></script>
-		<script src="lib/OrbitControls.js"></script>
-		<script src="asg5.js"></script>
-	</body>
+	<br>
+	<h2>Run the Code</h2>
+	<br>
+	*Run the code on a browser on windows or mac for the best viewing experience*
+
+	<ol>
+		<li>Download the project to a local directory</li>
+		<li>Navigate to the new directory in terminal or commandline</li>
+		<li>Type: "php -S localhost:8000" to startup a local php server</li>
+		<li>In a browser, Type: "https://localhost:8000/index.html" to run the html code</li>
+	</ol>
+
+	<br>
+	Controls:
+	<ol>
+		<li>Arrow Key - Panning</li>
+		<li>Mouse (click and drag) - Panning</li>
+		<li>Click on Planets to change their Color</li>
+		<li>Click on Earth to zoom into Earth</li>
+		<li>Once in Earth View, press "esc" button to return to normal view</li>
+	</ol>
+	<form action="driver.html">
+		<input type="submit" value="Start" style="background-color:#a5db5e;border-radius:0.5em;width:
+		100px;height:40px;font-size:large;margin-left:45%;cursor:pointer">
+	</form>
+	<br>
+	Driver HTML Code: <a href="driver.html">asg5.html</a>
+	<br>
+	JavaScript Code: <a href="asg5.js">asg5.js</a>
+	<br>
+	<br>
+	Example Output
+	<br>
+	<img style="margin-left:8%;margin-top:5%" src="Output.png" width="1200" height="600">
+	<br>
+	<br>
+	Demo Video
+	<br>
+	<video style="margin-left:8%" width="1200" height="700" controls>
+		<source src="asg5_demo.mov" type="video/mp4">
+	  Your browser does not support the video tag.
+	  </video>
+	
+	  <br>
+	  <br>
+	<div id="Op-Ed">
+		<h2>Op-Ed</h2>
+		Through this project, I learned many useful applications for 3d models and how convient/powerful THREE.js for creating 3d worlds. 
+		The library allows anyone to easily implement 3d models and apply animations with ease. Functions within the library are very straight forward and easy to implement. I quickly learned how to utilize RayCasting to allow for user interation with moving objects in real time.
+		I also learned how to use AnimationMixer to enable inherent animation of objects allowing for a more realistic experience.
+		However, I also encountered many issues during this project. Firstly, the cross origin issue was something I havn't seen before and
+		took me a while to figure out that a local server needs to be setup during local development when using resources from other origins.
+		Next, I had trouble implementing OBJ/MTL models using OBJLoader. I was not able to figure out how to implement texture mapping onto OBJ files even after extensive reading
+		so I ended up going to GLTF models. Even then, some of the bumpMap and roughness texture does not seem to render using the GLTFLoader (Earth is very round and shinny). 
+	</div>
+</body>
 </html>
